@@ -1,0 +1,83 @@
+<h2 mat-dialog-title>Add Hotel</h2>
+<mat-dialog-content class="mat-typography">
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-6">
+      <label for="hotelName" class="block mb-2 text-md font-bold text-gray-800"
+        >Hotel Name</label
+      >
+      <input
+        (ngModelChange)="call(1)"
+        type="text"
+        id="hotelName"
+        name="hotelName"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        [(ngModel)]="hotel.hotelName"
+      />
+      <p class="text-red-600">{{ errors[0] }}</p>
+    </div>
+
+    <div class="mb-6">
+      <label for="hotelName" class="block mb-2 text-md font-bold text-gray-800"
+        >Contract Start Date</label
+      >
+      <input
+        type="date"
+        id="hotelName"
+        min="{{ minDate }}"
+        (ngModelChange)="call(2)"
+        name="startDate"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        [(ngModel)]="hotel.startDate"
+      />
+      <p class="text-red-600">{{ errors[1] }}</p>
+    </div>
+
+    <div class="mb-6">
+      <label for="hotelName" class="block mb-2 text-md font-bold text-gray-800"
+        >Contract End Date
+      </label>
+      <input
+        type="date"
+        id="hotelName"
+        name="ëndDate"
+        min="{{ minDate }}"
+        (ngModelChange)="call(3)"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        [(ngModel)]="hotel.endDate"
+      />
+      <p class="text-red-600">{{ errors[2] }}</p>
+    </div>
+
+    <div class="mb-6">
+      <label for="percentage" class="block mb-2 text-md font-bold text-gray-800"
+        >Rate Percentage</label
+      >
+      <input
+        type="number"
+        id="percentage"
+        name="percentage"
+        (ngModelChange)="call(4)"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        [(ngModel)]="hotel.percentage"
+      />
+      <p class="text-red-600">{{ errors[3] }}</p>
+    </div>
+
+    <div class="flex justify-end">
+      <button
+        type="submit"
+        class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2 mr-2"
+      >
+        Add Hotel
+      </button>
+      <button
+        mat-dialog-close
+        type="button"
+        class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+  <p class="text-green-600">{{ successMessage }}</p>
+</mat-dialog-content>

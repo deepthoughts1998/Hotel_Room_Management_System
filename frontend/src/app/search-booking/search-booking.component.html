@@ -1,0 +1,109 @@
+<h2 mat-dialog-title>Add Room</h2>
+<mat-dialog-content class="mat-typography">
+  <form (ngSubmit)="onsubmit()"  >
+      <div class="mb-6">
+        <label
+        
+          for="checkInDate"
+          class="block mb-2 text-md font-bold text-gray-800" 
+          >Check In Date</label
+        >
+        
+
+        <input
+        [(ngModel)]="date"
+          type="date"
+          min="{{minDate}}"
+          (ngModelChange)="call(1)"
+          
+          id="checkInDate"
+          name="checkInDate"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+               />
+               <p class="text-red-600">{{errors[0]}}</p>
+      </div>
+
+      <div class="mb-6">
+        <label
+          for="nightsCount"
+          class="block mb-2 text-md font-bold text-gray-800"
+          >No of Nights</label
+        >
+        <input
+            [(ngModel)]="night"
+          type="number"
+          (ngModelChange)="call(2)"
+          id="nightsCount"
+          name="nightsCount"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                />
+                <p class="text-red-600">{{errors[1]}}</p>
+      </div>
+      
+
+      <div class="mb-6">
+        <label
+          for="nightsCount"
+          class="block mb-2 text-md font-bold text-gray-800"
+          >No.of Adults per room </label
+        >
+        <input
+          [(ngModel)]="k"      
+          type="number"
+          (ngModelChange)="call(3)"
+          id="nightsCount"
+          name="roomcount"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-2"
+                />
+        <div class="w-full flex justify-center">
+          <button type="button" (click)="add()" class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2 mr-2">Add Room</button>
+        </div>
+        <p class="text-red-600">{{errors[3]}}</p>
+        
+      </div>
+      <div  class="mb-6">
+        <p class="block mb-2 text-md font-bold text-gray-800">No.of rooms to be booked:{{roomList.length}}</p>
+        <table class="w-full text-sm text-center overflow-x-auto mb-2">
+          <tr class=" border-2 border-black shadow-inner" *ngFor="let room of roomList;let b=index;">
+            <td class="bg-gray-200 w-[60%]">
+             Room {{b+1}} :  Adults {{room.count}}
+                
+            </td>
+            <td>
+              <button type="button" (click)="remove(room,room.id)" class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2 mr-2">Remove</button>
+            </td>
+          </tr>
+        </table>
+
+        
+        
+        <p class="text-red-600">{{errors[2]}}</p>
+      </div>
+
+      
+      
+      
+    
+    <div class="flex justify-end">
+        <button
+        
+      type="submit"
+      class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2 mr-2"
+    >
+      Search
+    </button>
+    <button
+    #close
+    mat-dialog-close
+      type="button"
+      class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2"
+    >
+      Cancel
+    </button>
+    </div>
+    
+  </form>
+
+</mat-dialog-content>
+
+

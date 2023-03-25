@@ -1,0 +1,71 @@
+<div class="py-10">
+  <div class="overflow-x-auto relative sm:rounded-lg mx-[10%]">
+    <div class="w-full flex mb-2" fxLayout="row" fxLayoutAlign="space-between">
+      <h1>Room details</h1>
+      <button
+        class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2"
+        (click)="openAddDialog()"
+      >
+        Add
+      </button>
+    </div>
+
+    <table class="w-full text-sm text-center">
+      <thead class="text-xs text-white uppercase bg-black">
+        <tr>
+          <th scope="col" class="py-3 px-6">Id</th>
+          <th scope="col" class="py-3 px-6">Name</th>
+          <th scope="col" class="py-3 px-6">No.of rooms</th>
+          <th scope="col" class="py-3 px-6">
+            No.of Adult <i class="lowercase">(per room)</i>
+          </th>
+          <th scope="col" class="py-3 px-6">
+            Price <i class="lowercase">(per person)</i>
+          </th>
+          <th scope="col" class="py-3 px-6"></th>
+          <th scope="col" class="py-3 px-6"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let room of rooms"
+          class="bg-white border-b-2 border-b-black shadow-inner"
+        >
+          <td class="py-4 px-6">
+            {{ room[0] }}
+          </td>
+          <td class="py-4 px-6">
+            {{ room[1] }}
+          </td>
+          <td class="py-4 px-6">
+            {{ room[2] }}
+          </td>
+          <td class="py-4 px-6">
+            {{ room[3] }}
+          </td>
+          <td class="py-4 px-6">
+            {{ room[4] }}
+          </td>
+          <td class="py-4 px-6">
+            <button
+              mat-stroked-button
+              class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2"
+              (click)="openUpdateDialog(room)"
+            >
+              Update
+            </button>
+          </td>
+          <td class="py-4 px-6">
+            <button
+              mat-stroked-button
+              class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2"
+              (click)="openDeleteDialog(room)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

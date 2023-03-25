@@ -1,0 +1,48 @@
+<div class="p-4">
+  <div class="w-full flex justify-center p-2 mb-2">
+    <button
+      mat-stroked-button
+      class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2 shadow-2xl"
+      (click)="openSearchDialog()"
+    >
+      Show Search Options
+    </button>
+  </div>
+  <div *ngIf="searchResults.length==0">
+    <p class="font-bold text-xl mb-4">No search results available</p>
+  </div>
+
+  
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+    <div
+      class="block rounded-lg shadow-2xl bg-white text-center border-2"
+      *ngFor="let searchResult of searchResults"
+    >
+      <div class="p-6">
+        <p class="font-extrabold text-2xl mb-4 underline">
+          {{ searchResult[0][4] }}
+        </p>
+
+        <p class="font-bold text-xl mb-4">Rooms</p>
+
+        <div *ngFor="let t of searchResult">
+          <p class="text-base">
+            <i>{{ t[0] }} X {{ t[1] }}</i> (Rs.{{ t[2] }} )
+          </p>
+        </div>
+        <p class="font-bold text-xl mb-4">Total</p>
+        <div *ngFor="let t of searchResult; let last = last">
+          <p class="text-base mb-4" *ngIf="last">Rs.{{ t[3] }}</p>
+        </div>
+
+        <button
+          type="submit"
+          class="hover:bg-blue-500 hover:text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center border-2 mr-2"
+        >
+          Book
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
